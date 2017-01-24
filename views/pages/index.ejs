@@ -1,7 +1,16 @@
 <% include ../partials/header %>
 <div class="container">
   <div class="row">
-    <p>Halo</p>
+    <h1>Anagram</h1>
+    <br>
+    <form action="/anagram" method="get">
+      <div class="form-group">
+        <label for="anagram">Input Anagram: </label>
+        <input type="text" class="form-control" name="words" id="anagram" value="asdasdas" placeholder="Your Input">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
   </div>
 </div>
 <% include ../partials/footer %>

@@ -3,8 +3,17 @@ const fs = require("fs");
 let file = "./db/fixtures/words";
 let data = fs.readFileSync(file, "utf8");
 
-// helper.words(data);
-let words = data.split('\n')
+let words = data.split('\n');
+let wordsArr = []
+
+for (let i = 0; i < words.length; i++) {
+  wordsArr.push ({
+    word: words[i],
+    createdAt: new Date(),
+    updatedAt: new Date()
+  })
+}
+
 module.exports = {
   up: function (queryInterface, Sequelize) {
     /*
@@ -17,16 +26,7 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    for (let i = 0; i < words.length; i++) {
-      queryInterface.bulkInsert('Words', [
-        {
-          word: words[i],
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-      ]);
-    }
-    return queryInterface
+    return queryInterface.bulkInsert('Words', wordsArr);
   },
 
   down: function (queryInterface, Sequelize) {
@@ -37,5 +37,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('Person', null, {});
     */
+    return queryInterface.bulkDelete('Person', null, {});
   }
 };
