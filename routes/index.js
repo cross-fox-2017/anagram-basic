@@ -5,10 +5,10 @@ var helper = require('../helpers/util');
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
-  var word = req.query.word;
+  let words = req.query.word;
 
   // release 2
-  res.render('index', {title: 'Anagrams', word: word, anagrams: {} });
+  res.render('index', {title: 'Anagrams', word: words, anagrams: {} });
 
   // release 3
   // helper.anagrams(word, function(source, data){
