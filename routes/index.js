@@ -8,12 +8,14 @@ router.get('/', function(req, res, next) {
   var word = req.query.word;
 
   // release 2
-  res.render('index', {title: 'Anagrams', word: word, anagrams: {} });
+  if (!word){
+    res.render('index', {title: 'Anagrams', word: word, anagrams: {} });
+  }
 
   // release 3
-  // helper.anagrams(word, function(source, data){
-  //   res.render('index', { title: 'Anagrams', word: source, anagrams: data });
-  // });
+  helper.anagrams(word, function(source, data){
+    res.render('index', { title: 'Anagrams', word: source, anagrams: data });
+  });
 
 });
 
