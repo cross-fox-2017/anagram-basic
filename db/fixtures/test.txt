@@ -1,0 +1,5 @@
+apel
+elpa
+jeruk
+rukje
+mangga
