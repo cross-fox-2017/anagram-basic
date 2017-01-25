@@ -11,8 +11,9 @@ util.anagrams = function (source, callback){
   word.findAll({where: sequelize.where(sequelize.fn('char_length', sequelize.col('word')), source.length )
 }).then(function (data) {
     data.forEach(function(value){
-      let search = value.dataValues.word.split("").sort()
-      if (search.join("") == finder.join("")){
+      let word = value.dataValues.word
+      let search = word.split("").sort()
+      if (search.join("") == finder.join("") && source != word){
         result.push(value.dataValues.word);
       }
     })
