@@ -3,13 +3,18 @@
   <div class="row">
     <h1>Anagrams</h1>
     <br>
-    <form action="/" method="post">
+    <form action="/anagram" method="get">
       <div class="form-group">
         <label for="anagram">Input Anagram: </label>
         <input type="text" class="form-control" name="word_input" id="anagram" value="asdasdas" placeholder="Your Input">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <br>
+    <h2>Anagram Result: </h2>
+    <% for(let i = 0; i < output.length; i++){ %>
+      <p><%= output[i] %></p>
+    <% } %>
   </div>
 </div>
 <% include ../partials/footer %>

@@ -7,19 +7,19 @@ var models = require('../models/words');
 //
 // }
 module.exports = {
-  solve : function(input,obj) {
+  solve : function(input,find) {
     let arr = []
-    obj.findAll({raw: true}).then(function (find) {
-      for(let i = 0; i < find.length; i++){
-        for(let k = 0; k < input.length; k++) {
-          if (find[i].word.indexOf(input[k]) !== -1 && find[i].word.length === input.length) {
-            arr.push(find[i].word);
-            break;
-          }
-        }
+    input = input.split('')
+    for(let i = 0; i < find.length; i++){
+      let x = find[i].word.split('')
+      for(let k = 0; k < input.length; k++) {
+        x[k].sort(function(a, b){return a-b});
       }
-      console.log(arr);
-      return arr
-    })
+      input[i].sort(function(a, b){return a-b});
+      if(find[i] === input){
+        arr.push(find[i])
+      }
+    }
+    return arr;
   }
 }
