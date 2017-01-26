@@ -7,17 +7,15 @@ var models = require('../models/words');
 //
 // }
 module.exports = {
-  solve : function(input,find) {
+  solve : function(input,obj) {
     let arr = []
     input = input.split('')
-    for(let i = 0; i < find.length; i++){
-      let x = find[i].word.split('')
-      for(let k = 0; k < input.length; k++) {
-        x[k].sort(function(a, b){return a-b});
-      }
-      input[i].sort(function(a, b){return a-b});
-      if(find[i] === input){
-        arr.push(find[i])
+    let newInput = input.sort().join('');
+    let findArr = []
+    for(let i = 0; i < obj.length; i++){
+      findArr.push(obj[i].word.split('').sort().join(''))
+      if(findArr[i] === newInput){
+        arr.push(obj[i].word)
       }
     }
     return arr;
